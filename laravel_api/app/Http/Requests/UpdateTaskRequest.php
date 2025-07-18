@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class UpdateTaskRequest extends StoreRequest
+class UpdateTaskRequest extends StoreTaskRequest
 {
 
 }
