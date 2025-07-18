@@ -23,7 +23,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = Task::create($request->validated());
+
+        return $task->toResource();
     }
 
     /**
@@ -39,9 +41,11 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Task $task)
     {
-        //
+        $task->update($request->validated());
+
+        return $task->toResource();
     }
 
     /**
