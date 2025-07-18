@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Task;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TaskResource;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -13,7 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return Task::all();
+        // return TaskResource::collection(Task::all());
+        return Task::all()->toResourceCollection();
     }
 
     /**
@@ -27,9 +29,11 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Task $task)
     {
-        //
+        // return new TaskResource($task);
+        // return TaskResource::make($task);
+        return $task->toResource();
     }
 
     /**
